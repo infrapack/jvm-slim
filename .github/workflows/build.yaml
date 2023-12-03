@@ -27,8 +27,8 @@ jobs:
       - name: Build and Publish
         run: |
           docker build \
-            --tag "ghcr.io/infra-pack/jvm-slim:${{ matrix.jre-version }}" \
+            --tag "ghcr.io/infrapack/jvm-slim:${{ matrix.jre-version }}" \
             --file "jre-${{ matrix.jre-version }}/Dockerfile" \
             --platform linux/amd64 \
             "jre-${{ matrix.jre-version }}"
-          docker push "ghcr.io/infra-pack/jvm-slim:${{ matrix.jre-version }}"
+          docker push "ghcr.io/infrapack/jvm-slim:${{ matrix.jre-version }}"
