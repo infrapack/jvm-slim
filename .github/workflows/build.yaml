@@ -1,0 +1,34 @@
+name: Build and Publish
+
+on:
+  push:
+    branches:
+      - master
+  # Schedule updates (each day)
+  schedule:
+    - cron: "0 8 * * *"  # every day at 8am UTC
+  # Lines below let you run workflow manually and on each commit
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        jre-version: [11, 17, 21]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Docker
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{github.actor}}
+          password: ${{secrets.GITHUB_TOKEN}}
+      - name: Build and Publish
+        run: |
+          docker build \
+            --tag "ghcr.io/infra-pack/jvm-slim:${{ matrix.jre-version }}" \
+            --file "jre-${{ matrix.jre-version }}/Dockerfile" \
+            --platform linux/amd64
+            "jre-${{ matrix.jre-version }}"
+          docker push "ghcr.io/infra-pack/jvm-slim:${{ matrix.jre-version }}"
