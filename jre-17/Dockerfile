@@ -6,7 +6,7 @@ RUN apk add --no-cache binutils
 # Build small JRE image
 RUN $JAVA_HOME/bin/jlink \
 	--verbose \
-	--add-modules java.base,java.naming,java.net.http,jdk.httpserver,jdk.unsupported,jdk.zipfs,java.datatransfer \
+	--add-modules java.base,java.desktop,java.naming,java.net.http,java.sql,java.xml,jdk.crypto.cryptoki,jdk.crypto.ec,jdk.naming.dns,jdk.naming.rmi,jdk.net,jdk.unsupported,jdk.zipfs \
 	--strip-debug \
 	--no-man-pages \
 	--no-header-files \
