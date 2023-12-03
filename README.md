@@ -11,3 +11,7 @@ Amazon Corretto based Docker images with a minimal footprint.
 ## How it works
 
 The images are based on the [Amazon Corretto](https://aws.amazon.com/corretto/) Docker images as build images. Then, using JLink the images are stripped down to the bare minimum required to run a JVM application.
+
+## Details
+
+This image works with [Micronaut](https://micronaut.io/) basic applications.
