@@ -29,6 +29,6 @@ jobs:
           docker build \
             --tag "ghcr.io/infra-pack/jvm-slim:${{ matrix.jre-version }}" \
             --file "jre-${{ matrix.jre-version }}/Dockerfile" \
-            --platform linux/amd64
+            --platform linux/amd64 \
             "jre-${{ matrix.jre-version }}"
           docker push "ghcr.io/infra-pack/jvm-slim:${{ matrix.jre-version }}"
